@@ -1,5 +1,16 @@
 import pytest
-from solution import get_basement, get_final_floor
+from generator_solution.solution import (
+    generate_next_floor,
+    get_basement,
+    get_final_floor,
+)
+
+
+def test_generate_next_floor():
+    input = "()"
+    expected = [1, -1]
+    actual = [i for i in generate_next_floor(input=input)]
+    assert actual == expected
 
 
 @pytest.mark.parametrize(
