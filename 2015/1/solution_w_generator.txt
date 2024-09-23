@@ -1,0 +1,2 @@
+Part 1: Santa ends up on floor 232
+Part 2: Character position for basement is 1783
