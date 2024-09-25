@@ -1,11 +1,35 @@
+from dataclasses import dataclass
 from functools import reduce
 from itertools import combinations
+
+
+@dataclass
+class Cuboid:
+    length: int
+    width: int
+    height: int
+
+    @property
+    def dimension_combinations(self) -> list:
+        return [i for i in combinations([self.length, self.width, self.height], 2)]
+
+    @property
+    def volume(self) -> int:
+        return self.length * self.width * self.height
+
+    @property
+    def surface_areas(self) -> list:
+        return [x * y for x, y in self.dimension_combinations]
+
+    @property
+    def perimeters(self) -> list:
+        return [2 * (x + y) for x, y in self.dimension_combinations]
 
 
 def get_wrapping_paper_square_footage(dimensions: str) -> int:
     """
     Calculate square footage via formula:
-        2*(l*w + w*h + h*l) + min(l*w, w*h, h*l)
+        2*(sum of surface areas) + min(surface areas)
 
 
     Args:
@@ -15,15 +39,14 @@ def get_wrapping_paper_square_footage(dimensions: str) -> int:
         Total square footage required.
     """
     dimension_list = [int(i) for i in dimensions.split("x")]
-    dimension_combinations = [i for i in combinations(dimension_list, 2)]
-    areas = [x * y for x, y in dimension_combinations]
-    return (2 * sum(areas)) + min(areas)
+    present_shape = Cuboid(*dimension_list)
+    return (2 * sum(present_shape.surface_areas)) + min(present_shape.surface_areas)
 
 
 def get_ribbon_length(dimensions: str) -> int:
     """
     Get ribbon length via formula:
-        2*min(l+w, w+h, h+l) + (l*w*h)
+        min(perimeters) + volume
 
 
     Args:
@@ -33,10 +56,8 @@ def get_ribbon_length(dimensions: str) -> int:
         Total ribbon lenght required
     """
     dimension_list = [int(i) for i in dimensions.split("x")]
-    dimension_combinations = [i for i in combinations(dimension_list, 2)]
-    perimeters = [x + y for x, y in dimension_combinations]
-    volume = reduce((lambda x, y: x * y), dimension_list)
-    return (2 * min(perimeters)) + volume
+    present_shape = Cuboid(*dimension_list)
+    return (min(present_shape.perimeters)) + present_shape.volume
 
 
 if __name__ == "__main__":
@@ -47,7 +68,7 @@ if __name__ == "__main__":
         )
         total_ribbon = sum(get_ribbon_length(dimension) for dimension in dimensions)
 
-    with open("./2015/2/solution.txt", "w") as output_file:
+    with open("./2015/2/class_solution.txt", "w") as output_file:
         output_file.write(
             f"Part 1: Total wrapping paper needed is {total_wrapping_paper} square foot\n"
         )

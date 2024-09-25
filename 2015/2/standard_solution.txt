@@ -1,0 +1,2 @@
+Part 1: Total wrapping paper needed is 1598415 square foot
+Part 2: Total ribbon needed is 3812909 feet

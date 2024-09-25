@@ -1,5 +1,8 @@
 import pytest
-from solution import get_ribbon_length, get_wrapping_paper_square_footage
+from standard_solution.solution import (
+    get_ribbon_length,
+    get_wrapping_paper_square_footage,
+)
 
 
 @pytest.mark.parametrize(
