@@ -1,0 +1,2 @@
+Part 1: Number of houses with at least one present is 2565
+Part 2: With the addition of Robo-Santa, 2639 got presents
