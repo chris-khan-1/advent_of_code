@@ -1,0 +1,2 @@
+Part 1: Lowest value for 5 zeroes is 346386
+Part 2: Lowest value for 6 zeroes is 9958218

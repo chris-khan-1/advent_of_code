@@ -1,11 +1,47 @@
---- Day 4: The Ideal Stocking Stuffer ---
+import hashlib
 
-Santa needs help mining some AdventCoins (very similar to bitcoins) to use as gifts for all the economically forward-thinking little girls and boys.
+from utils.variables import Variables
 
-To do this, he needs to find MD5 hashes which, in hexadecimal, start with at least five zeroes. The input to the MD5 hash is some secret key (your puzzle input, given below) followed by a number in decimal. To mine AdventCoins, you must find Santa the lowest positive number (no leading zeroes: 1, 2, 3, ...) that produces such a hash.
 
-For example:
+def get_md5_hash(secret_key: str, value: int) -> str:
+    message = secret_key + str(value)
+    return hashlib.md5(message.encode("utf-8")).hexdigest()
 
-    If your secret key is abcdef, the answer is 609043, because the MD5 hash of abcdef609043 starts with five zeroes (000001dbbfa...), and it is the lowest such number to do so.
-    If your secret key is pqrstuv, the lowest number it combines with to make an MD5 hash starting with five zeroes is 1048970; that is, the MD5 hash of pqrstuv1048970 looks like 000006136ef....
 
+def check_starts_with_number_of_zeroes(input: str, digit_length: int) -> bool:
+    if input[:digit_length] == "0" * digit_length:
+        return True
+    return False
+
+
+def get_lowest_value_required(secret_key: str, digit_length: int) -> int:
+    number = 1
+    while (
+        check_starts_with_number_of_zeroes(
+            input=get_md5_hash(secret_key=secret_key, value=number),
+            digit_length=digit_length,
+        )
+        is False
+    ):
+        number += 1
+    return number
+
+
+if __name__ == "__main__":
+    print(Variables.year, Variables.day)
+    with open("./2015/4/input.txt", "r") as input_file:
+        secret_key = input_file.read()
+        # lowest_value_5_zeroes = get_lowest_value_required(
+        #     secret_key=secret_key, digit_length=5
+        # )
+        # lowest_value_6_zeroes = get_lowest_value_required(
+        #     secret_key=secret_key, digit_length=6
+        # )
+
+    # with open("./2015/4/solution.txt", "w") as output_file:
+    #     output_file.write(
+    #         f"Part 1: Lowest value for 5 zeroes is {lowest_value_5_zeroes}\n"
+    #     )
+    #     output_file.write(
+    #         f"Part 2: Lowest value for 6 zeroes is {lowest_value_6_zeroes}\n"
+    #     )
