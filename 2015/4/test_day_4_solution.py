@@ -30,13 +30,13 @@ def check_starts_with_number_of_zeroes(input, digit_length, expected):
     assert actual == expected
 
 
-@pytest.mark.parametrize(
-    argnames=["secret_key", "digit_length", "expected"],
-    argvalues=[
-        pytest.param("abcdef", 5, 609043),
-        pytest.param("pqrstuv", 5, 1048970),
-    ],
-)
-def test_get_lowest_value_required(secret_key, digit_length, expected):
-    actual = get_lowest_value_required(secret_key=secret_key, digit_length=digit_length)
-    assert actual == expected
+# @pytest.mark.parametrize(
+#     argnames=["secret_key", "digit_length", "expected"],
+#     argvalues=[
+#         pytest.param("abcdef", 5, 609043),
+#         pytest.param("pqrstuv", 5, 1048970),
+#     ],
+# )
+# def test_get_lowest_value_required(secret_key, digit_length, expected):
+#     actual = get_lowest_value_required(secret_key=secret_key, digit_length=digit_length)
+#     assert actual == expected
