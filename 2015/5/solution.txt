@@ -1,1 +1,2 @@
 Part 1: There are a total of 255 nice strings!
+Part 2: There are a total of 55 nice strings with the new rules!

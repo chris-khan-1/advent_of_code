@@ -1,12 +1,15 @@
 import pytest
 from day_5_solution import (
+    contains_pair_of_letters_at_least_twice,
+    contains_repeat_with_one_letter_gap,
     double_letter_exists,
     is_clear_of_bad_strings,
+    is_definitely_nice_string,
     is_nice_string,
-    three_vowels_exist,
 )
 
 
+# --- Part One ---
 @pytest.mark.parametrize(
     argnames=["input", "expected"],
     argvalues=[
@@ -18,8 +21,8 @@ from day_5_solution import (
         pytest.param("xyz", False),
     ],
 )
-def test_three_vowels_exist(input, expected):
-    actual = three_vowels_exist(input=input)
+def test_contains_pair_of_letters_at_least_twice(input, expected):
+    actual = contains_pair_of_letters_at_least_twice(input=input)
     assert actual == expected
 
 
@@ -59,4 +62,50 @@ def test_is_clear_of_bad_strings(input, expected):
 )
 def test_is_nice_string(input, expected):
     actual = is_nice_string(input=input)
+    assert actual == expected
+
+
+# --- Part Two ---
+@pytest.mark.parametrize(
+    argnames=["string", "expected"],
+    argvalues=[
+        pytest.param("xyxy", True, id="xy"),
+        pytest.param("aabcdefgaa", True, id="aa"),
+        pytest.param("aaa", False, id="overlaps"),
+        pytest.param("aaaaa", True, id="overlaps 5"),
+        pytest.param("abcd", False, id="no matches"),
+    ],
+)
+def test_contains_pair_of_letters_at_least_twice(string, expected):
+    actual = contains_pair_of_letters_at_least_twice(string=string)
+    assert actual == expected
+
+
+@pytest.mark.parametrize(
+    argnames=["string", "expected"],
+    argvalues=[
+        pytest.param("xyx", True, id="xyx"),
+        pytest.param("abcdefeghi", True, id="efe"),
+        pytest.param("aaa", True, id="aaa"),
+        pytest.param("abc", False, id="no gap"),
+        pytest.param("abca", False, id="2 gap"),
+        pytest.param("abaca", True, id="multiple trues"),
+    ],
+)
+def test_contains_repeat_with_one_letter_gap(string, expected):
+    actual = contains_repeat_with_one_letter_gap(string=string)
+    assert actual == expected
+
+
+@pytest.mark.parametrize(
+    argnames=["input", "expected"],
+    argvalues=[
+        pytest.param("qjhvhtzxzqqjkmpb", True),
+        pytest.param("xxyxx", True),
+        pytest.param("uurcxstgmygtbstg", False, id="no repeat single letter"),
+        pytest.param("ieodomkazucvgmuy", False, id="no pair twice"),
+    ],
+)
+def test_is_definitely_nice_string(input, expected):
+    actual = is_definitely_nice_string(input=input)
     assert actual == expected

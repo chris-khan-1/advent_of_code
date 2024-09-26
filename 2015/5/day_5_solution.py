@@ -1,3 +1,6 @@
+# --- Part One ---
+
+
 def three_vowels_exist(input: str) -> bool:
     vowels = ["a", "e", "i", "o", "u"]
     vowel_count = 0
@@ -32,12 +35,42 @@ def is_nice_string(input: str) -> bool:
     return False
 
 
+# --- Part Two ---
+
+
+def contains_pair_of_letters_at_least_twice(string: str) -> bool:
+    for i in range(len(string) - 3):
+        letter_pair = string[i : i + 2]
+        if letter_pair in string[i + 2 :]:
+            return True
+    return False
+
+
+def contains_repeat_with_one_letter_gap(string: str) -> bool:
+    for i in range(len(string) - 2):
+        if string[i] == string[i + 2]:
+            return True
+    return False
+
+
+def is_definitely_nice_string(input: str) -> bool:
+    return contains_repeat_with_one_letter_gap(
+        string=input
+    ) and contains_pair_of_letters_at_least_twice(string=input)
+
+
 if __name__ == "__main__":
     with open("./2015/5/input.txt", "r") as input_file:
         strings = [line.rstrip() for line in input_file]
         total_nice_strings = sum([is_nice_string(input=string) for string in strings])
+        total_new_nice_strings = sum(
+            [is_definitely_nice_string(input=string) for string in strings]
+        )
 
     with open("./2015/5/solution.txt", "w") as output_file:
         output_file.write(
             f"Part 1: There are a total of {total_nice_strings} nice strings!\n"
+        )
+        output_file.write(
+            f"Part 2: There are a total of {total_new_nice_strings} nice strings with the new rules!"
         )

@@ -1,6 +1,3 @@
-from collections.abc import Generator
-
-
 def get_next_house_cordinate(
     start_coordinates: tuple, direction: str
 ) -> tuple[int, int]:
