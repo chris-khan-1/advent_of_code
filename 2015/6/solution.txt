@@ -1,0 +1,2 @@
+Part 1: There are now 543903 lights on.
+Part 2: The total brightnes is now 14687245.
