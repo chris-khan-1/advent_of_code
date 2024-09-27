@@ -1,0 +1,2 @@
+Part 1: The signal provided to wire a is 16076
+Part 2: The new signal provided to wire a is 2797
