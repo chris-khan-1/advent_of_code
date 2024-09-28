@@ -1,0 +1,2 @@
+Part 1: The length of the value after the 40th iteration is 329356.
+Part 2: The length of the value after the 50th iteration is 4666278.
