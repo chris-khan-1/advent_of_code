@@ -1,0 +1,2 @@
+Part 1: The difference is 1371.
+Part 2: The difference is 2117.
