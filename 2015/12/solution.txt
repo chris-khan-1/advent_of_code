@@ -1,0 +1,2 @@
+Part 1: The sum of all digits is 191164.
+Part 2: The sum of all digits for the reduced input is 87842
