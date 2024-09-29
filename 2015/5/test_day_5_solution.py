@@ -6,6 +6,7 @@ from day_5_solution import (
     is_clear_of_bad_strings,
     is_definitely_nice_string,
     is_nice_string,
+    three_vowels_exist,
 )
 
 
@@ -21,8 +22,8 @@ from day_5_solution import (
         pytest.param("xyz", False),
     ],
 )
-def test_contains_pair_of_letters_at_least_twice(input, expected):
-    actual = contains_pair_of_letters_at_least_twice(input=input)
+def test_three_vowels_exist(input, expected):
+    actual = three_vowels_exist(input=input)
     assert actual == expected
 
 

@@ -1,7 +1,7 @@
 import pytest
+from day_11_solution import get_next_valid_password  # noqa: F401
 from day_11_solution import (
     get_next_possible_password,
-    get_next_valid_password,
     is_password_valid,
     next_letter,
     update_password_with_next_letter,
