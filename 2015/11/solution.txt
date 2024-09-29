@@ -1,0 +1,2 @@
+Part 1: The next valid password is vzbxxyzz
+Part 2: The next valid password is vzcaabcc
