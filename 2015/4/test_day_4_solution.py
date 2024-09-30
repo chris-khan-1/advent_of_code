@@ -1,9 +1,6 @@
 import pytest
-from day_4_solution import (
-    check_starts_with_number_of_zeroes,
-    get_lowest_value_required,
-    get_md5_hash,
-)
+from day_4_solution import get_lowest_value_required  # noqa: F401
+from day_4_solution import check_starts_with_number_of_zeroes, get_md5_hash
 
 
 @pytest.mark.parametrize(
@@ -19,13 +16,13 @@ def test_get_md5_hash(secret_key, input, expected):
 
 
 @pytest.mark.parametrize(
-    argnames=["input", "digit_length" "expected"],
+    argnames=["input", "digit_length", "expected"],
     argvalues=[
         pytest.param("00000xy", 5, True),
         pytest.param("abcdefg", 5, False),
     ],
 )
-def check_starts_with_number_of_zeroes(input, digit_length, expected):
+def test_check_starts_with_number_of_zeroes(input, digit_length, expected):
     actual = check_starts_with_number_of_zeroes(input=input, digit_length=digit_length)
     assert actual == expected
 
