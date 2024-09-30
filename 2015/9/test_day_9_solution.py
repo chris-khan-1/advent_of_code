@@ -8,7 +8,7 @@ from day_9_solution import (
 )
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def mock_route_info():
     return {
         "London": {"Dublin": 464, "Belfast": 518},

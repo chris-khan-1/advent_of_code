@@ -2,7 +2,7 @@ from collections import defaultdict
 from itertools import permutations
 
 
-def parse_information(input: list[str]) -> dict[dict]:
+def parse_happiness_info(input: list[str]) -> dict[dict]:
     info_dict = defaultdict(dict)
 
     for info in input:
@@ -34,7 +34,7 @@ def get_possible_seating_arrangement(happiness_info: dict) -> list:
 
 
 def get_largest_happiness_change(input: list[str], include_me: bool = False) -> list:
-    happiness_info = parse_information(input=input)
+    happiness_info = parse_happiness_info(input=input)
 
     if include_me:
         happiness_info = add_myself_to_happiness_info(happiness_info=happiness_info)

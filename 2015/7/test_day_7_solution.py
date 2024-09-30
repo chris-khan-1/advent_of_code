@@ -23,7 +23,7 @@ def test_parse_instruction_list():
     assert actual == expected
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def mock_instructions():
     return {
         "x": "123",
