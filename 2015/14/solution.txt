@@ -1,0 +1,2 @@
+Part 1: The distance of the winner is 2655.
+Part 2: The winning number of points is 1059.
