@@ -1,0 +1,2 @@
+Part 1: The best score is 222870.
+Part 2: The best score with a calorie total of 500 is 117936.
