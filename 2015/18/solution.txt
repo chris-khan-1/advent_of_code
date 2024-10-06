@@ -1,0 +1,2 @@
+Part 1: The final count for lights on is 768.
+Part 2: The final count for lights on is 781.
