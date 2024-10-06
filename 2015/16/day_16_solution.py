@@ -43,25 +43,48 @@ def get_correct_sue(input: list[str], test_results: dict):
             return sue
 
 
+def check_sue_updated(individual_sue_info: dict, test_results: dict):
+    for attribute, value in individual_sue_info.items():
+        if value is not None:
+            if attribute in ("cats", "trees"):
+                if value <= test_results[attribute]:
+                    return False
+            elif attribute in ("pomeranians", "goldfish"):
+                if test_results[attribute] <= value:
+                    return False
+            else:
+                if test_results[attribute] != value:
+                    return False
+    return True
+
+
+def get_correct_sue_updated(input: list[str], test_results: dict):
+    sue_info = parse_sue_info(input=input)
+    for sue, attributes in sue_info.items():
+        if check_sue_updated(individual_sue_info=attributes, test_results=test_results):
+            return sue
+
+
 if __name__ == "__main__":
     with open("./2015/16/input.txt", "r") as input_file:
         input = [line.strip() for line in input_file.readlines()]
-        correct_sue = get_correct_sue(
-            input=input,
-            test_results={
-                "children": 3,
-                "cats": 7,
-                "samoyeds": 2,
-                "pomeranians": 3,
-                "akitas": 0,
-                "vizslas": 0,
-                "goldfish": 5,
-                "trees": 3,
-                "cars": 2,
-                "perfumes": 1,
-            },
+        test_results = {
+            "children": 3,
+            "cats": 7,
+            "samoyeds": 2,
+            "pomeranians": 3,
+            "akitas": 0,
+            "vizslas": 0,
+            "goldfish": 5,
+            "trees": 3,
+            "cars": 2,
+            "perfumes": 1,
+        }
+        correct_sue = get_correct_sue(input=input, test_results=test_results)
+        updated_correct_sue = get_correct_sue_updated(
+            input=input, test_results=test_results
         )
 
     with open("./2015/16/solution.txt", "w") as output_file:
         output_file.write(f"Part 1: The correct sue is number {correct_sue}.\n")
-        output_file.write(f"Part 2: ")
+        output_file.write(f"Part 2: The updated sue is number {updated_correct_sue}.")

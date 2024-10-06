@@ -1,4 +1,9 @@
-from day_16_solution import check_sue, get_correct_sue, parse_sue_info
+from day_16_solution import (
+    check_sue,
+    check_sue_updated,
+    get_correct_sue,
+    parse_sue_info,
+)
 
 
 def test_parse_sue_info():
@@ -117,3 +122,33 @@ def test_get_correct_sue():
     }
     actual = get_correct_sue(input=input, test_results=test_results)
     assert actual == "3"
+
+
+def test_check_sue_updated_fail():
+    actual = check_sue_updated(
+        individual_sue_info={
+            "children": None,
+            "cats": None,
+            "samoyeds": None,
+            "pomeranians": None,
+            "akitas": 0,
+            "vizslas": None,
+            "goldfish": 6,
+            "trees": 8,
+            "cars": None,
+            "perfumes": None,
+        },
+        test_results={
+            "children": 1,
+            "cats": 2,
+            "samoyeds": 3,
+            "pomeranians": 4,
+            "akitas": 0,
+            "vizslas": 5,
+            "goldfish": 6,
+            "trees": 9,
+            "cars": 4,
+            "perfumes": 2,
+        },
+    )
+    assert actual is False
