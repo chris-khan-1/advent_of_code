@@ -1,0 +1,2 @@
+Part 1: The total number of combos to fit 150 litres of eggnog is 654.
+Part 2: The total number of combos, with minimal size, to fit 150 litres of eggnog is 57.
