@@ -1,0 +1,2 @@
+Part 1: The number of distinct molecules created is 535.
+Part 2: The fewest steps is 212.
