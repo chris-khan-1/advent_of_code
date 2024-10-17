@@ -1,0 +1,2 @@
+Part 1: The lowest house number is 776160. It took 28.529s.
+Part 2: The new lowest house number is 786240. It took 28.623s.
