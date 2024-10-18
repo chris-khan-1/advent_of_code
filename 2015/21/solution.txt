@@ -1,0 +1,2 @@
+Part 1: The cheapest win costs 111 gold.
+Part 2: The most expensive loss costs 188 gold.
