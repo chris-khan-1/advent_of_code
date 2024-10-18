@@ -1,4 +1,4 @@
-from collections.abc import Generator
+from typing import Generator
 
 
 def generate_next_floor(input: str) -> Generator[int]:
